@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/baron-neue');
+
+        body {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            text-align: center;
+            font-family: 'Baron Neue', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation: rgb-text 5s infinite linear;
+            letter-spacing: 3px;
+            margin-top: 50px;
+        }
+
+        @keyframes rgb-text {
+            0% { color: rgb(255, 0, 0); text-shadow: 0 0 10px rgba(255,0,0,0.5); }
+            33% { color: rgb(0, 255, 0); text-shadow: 0 0 10px rgba(0,255,0,0.5); }
+            66% { color: rgb(0, 0, 255); text-shadow: 0 0 10px rgba(0,0,255,0.5); }
+            100% { color: rgb(255, 0, 0); text-shadow: 0 0 10px rgba(255,0,0,0.5); }
+        }
+
+        .shop {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px auto;
+        }
+
+        .shop div {
+            margin: 20px;
+            padding: 15px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            transition: transform 0.3s, border-color 0.3s;
+            width: 250px;
+        }
+
+        .shop div:hover {
+            transform: scale(1.05);
+            border-color: rgb(0, 255, 255);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .shop img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 5px;
+            background: #111;
+        }
+
+        a {
+            color: #00e5ff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        a:hover {
+            color: #ff00ff;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ff0000, #00ff00, #0000ff, transparent);
+            margin: 50px 0;
+        }
+
+        #game-container {
+            width: 600px;
+            height: 150px;
+            border-bottom: 2px solid white;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            background-color: #111;
+            cursor: pointer;
+        }
+
+        #dino {
+            width: 40px;
+            height: 40px;
+            background-color: #ff00ff;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+        }
+
+        #cactus {
+            width: 30px;
+            height: 30px;
+            background-color: #00ff00;
+            position: absolute;
+            bottom: 0;
+            left: 580px;
+        }
+
+        .cactus-move {
+            animation: move 1.5s infinite linear;
+        }
+
+        @keyframes move {
+            0% { left: 600px; }
+            100% { left: -50px; }
+        }
+
+        .animate-jump {
+            animation: jump-frames 0.5s linear;
+        }
+
+        @keyframes jump-frames {
+            0% { bottom: 0; }
+            30% { bottom: 80px; }
+            70% { bottom: 80px; }
+            100% { bottom: 0; }
+        }
+
+        .copyright {
+            text-align: right;
+            font-family: 'Baron Neue', monospace;
+            font-style: italic;
+            margin: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to our portfolio</h1>
+
+    <div class="shop">
+        <div>
+            <img src="https://discord.com/channels/@me/1412721336345956352/1490575011046756372" alt="tanwa">
+            <p><a href="https://www.bio-techne.com/">tanwa</a></p>
+        </div>
+        <div>
+            <img src="https://www.popticles.com/wp-content/uploads/2024/04/Amazon_The_Most_Valuable_Brands_2023.jpg" alt="amazon">
+            <p><a href="https://www.amazon.com/">amazon</a></p>
+        </div>
+    </div>
+   
+<hr>
+
+<h3>Press SPACE or Click To Jump!</h3>
+<div id="game-container" onclick="jump()">
+    <div id="dino"></div>
+    <div id="cactus" class="cactus-move"></div>
+</div>
+
+<script>
+    const dino = document.getElementById("dino");
+    const cactus = document.getElementById("cactus");
+
+    function jump() {
+        if (!dino.classList.contains("animate-jump")) {
+            dino.classList.add("animate-jump");
+            setTimeout(function() {
+                dino.classList.remove("animate-jump");
+            }, 500);
+        }
+    }
+
+    document.addEventListener("keydown", function(event) {
+        if (event.code === "Space") {
+            jump();
+        }
+    });
+
+    let isAlive = setInterval(function() {
+        let dinoRect = dino.getBoundingClientRect();
+        let cactusRect = cactus.getBoundingClientRect();
+
+        if (
+            cactusRect.left < dinoRect.right &&
+            cactusRect.right > dinoRect.left &&
+            dinoRect.bottom > cactusRect.top
+        ) {
+            alert("Game Over! Try again?");
+            cactus.classList.remove("cactus-move");
+            void cactus.offsetWidth;
+            cactus.classList.add("cactus-move");
+        }
+    }, 10);
+</script>
+
+    <div class="copyright">
+        &copy; our portfolio main menu :D
+    </div>
+
+</body>
+</html>
