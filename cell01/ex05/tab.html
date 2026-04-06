@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Box Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 75vh;
+            margin: 5;
+            background-color: #f0f0f0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            background-color: rgb(106, 135, 215);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        td {
+            padding: 40px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            width: 500px;
+            height: 350px;
+        }
+        
+        .box1 {
+            background-color: #ff6b6bee;
+            color: white;
+        }
+        
+        .box2 {
+            background-color: #4ECDC4;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="box1">left</td>
+            <td class="box2">right</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+/* Ensure the html and body take up the full screen height */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevents unwanted scrollbars */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100vh; /* Covers the entire vertical viewport */
+    table-layout: fixed; /* Forces cells to respect widths even when shrinking */
+}
+
+td {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 5vw; /* Font shrinks/grows based on browser width */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition when resizing */
+}
+
+.box1 {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.box2 {
+    background-color: #4ECDC4;
+    color: white;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    td {
+        font-size: 10vw; /* Keeps text readable on small screens */
+        padding: 10px;
+    }
+}
