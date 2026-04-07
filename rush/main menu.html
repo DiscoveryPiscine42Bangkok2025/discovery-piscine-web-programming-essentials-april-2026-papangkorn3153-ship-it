@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Our Portfolio</title>
     <style>
         @import url('https://fonts.cdnfonts.com/css/baron-neue');
 
@@ -14,6 +14,7 @@
             font-family: 'Baron Neue', 'Segoe UI', sans-serif;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         h1 {
@@ -30,48 +31,61 @@
             100% { color: rgb(255, 0, 0); text-shadow: 0 0 10px rgba(255,0,0,0.5); }
         }
 
-        .shop {
+        /* Profile Section Styling */
+        .profile-container {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
+            gap: 20px;
             margin: 40px auto;
+            flex-wrap: wrap;
         }
 
-        .shop div {
-            margin: 20px;
-            padding: 15px;
-            border: 2px solid #333;
-            border-radius: 10px;
-            transition: transform 0.3s, border-color 0.3s;
-            width: 250px;
+        .profile-card {
+            background-color: #1a1a1a; /* Darker card for the dark theme */
+            border-radius: 15px;
+            font-family: sans-serif;
+            padding: 20px;
+            text-align: center;
+            width: 280px;
+            border: 1px solid #333;
+            transition: transform 0.3s;
         }
 
-        .shop div:hover {
-            transform: scale(1.05);
-            border-color: rgb(0, 255, 255);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        .profile-card:hover {
+            transform: translateY(-10px);
+            border-color: #00e5ff;
         }
 
-        .shop img {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
+        .profile-card h2, .profile-card h3 {
+            margin: 10px 0;
+            color: #fff;
+        }
+
+        .profile-card p {
+            color: #aaa;
+        }
+
+        .profile-card img.avatar {
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+
+        .contact-btn {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #00e5ff;
+            border: none;
             border-radius: 5px;
-            background: #111;
-        }
-
-        a {
-            color: #00e5ff;
-            text-decoration: none;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            transition: 0.3s;
         }
 
-        a:hover {
-            color: #ff00ff;
+        .contact-btn:hover {
+            background: #ff00ff;
+            color: white;
         }
 
+        /* Game Styling */
         hr {
             border: 0;
             height: 1px;
@@ -105,7 +119,7 @@
             background-color: #00ff00;
             position: absolute;
             bottom: 0;
-            left: 580px;
+            left: 600px;
         }
 
         .cactus-move {
@@ -132,7 +146,7 @@
             text-align: right;
             font-family: 'Baron Neue', monospace;
             font-style: italic;
-            margin: 20px;
+            margin: 40px 20px 20px;
             color: #555;
         }
     </style>
@@ -141,60 +155,73 @@
 
     <h1>Welcome to our portfolio</h1>
 
-    <div class="shop">
-        <div>
-            <img src="" alt="tanwa">
-            <p><a href="https://opulent-winner-r4jqgw7v77v7h9rv-5501.app.github.dev/rush/about.html">tanwa</a></p>
+    <div class="profile-container">
+        <div class="profile-card">
+            <h2>User Profile 1</h2>
+            <img src="https://via.placeholder.com/120" alt="Profile 1" width="120" class="avatar">
+            <h3></h3>
+            <p><i>click button below</i></p>
+            <div style="margin: 15px 0;">
+            </div>
+            <a href=""><button class="contact-btn">about me</button></a>
         </div>
-        <div>
-            <img src="" alt="bio">
-            <p><a href="https://organic-yodel-4jxpx5g6gj9jf7pq7-5500.app.github.dev/rush/about(bio).html">bio</a></p>
+
+        <div class="profile-card">
+            <h2>pampoowe</h2>
+            <img src="https://via.placeholder.com/120" alt="Profile 2" width="120" class="avatar">
+            <h3></h3>
+            <p><i>click button below</i></p>
+            <div style="margin: 15px 0;">
+            </div>
+            <a href="https://organic-yodel-4jxpx5g6gj9jf7pq7-5500.app.github.dev/rush/about(bio).html"><button class="contact-btn">about me</button></a>
         </div>
     </div>
    
-<hr>
+    <hr>
 
-<h3>Press SPACE or Click To Jump!</h3>
-<div id="game-container" onclick="jump()">
-    <div id="dino"></div>
-    <div id="cactus" class="cactus-move"></div>
-</div>
+    <h3>Press SPACE or Click To Jump!</h3>
+    <div id="game-container" onclick="jump()">
+        <div id="dino"></div>
+        <div id="cactus" class="cactus-move"></div>
+    </div>
 
-<script>
-    const dino = document.getElementById("dino");
-    const cactus = document.getElementById("cactus");
+    <script>
+        const dino = document.getElementById("dino");
+        const cactus = document.getElementById("cactus");
 
-    function jump() {
-        if (!dino.classList.contains("animate-jump")) {
-            dino.classList.add("animate-jump");
-            setTimeout(function() {
-                dino.classList.remove("animate-jump");
-            }, 500);
+        function jump() {
+            if (!dino.classList.contains("animate-jump")) {
+                dino.classList.add("animate-jump");
+                setTimeout(function() {
+                    dino.classList.remove("animate-jump");
+                }, 500);
+            }
         }
-    }
 
-    document.addEventListener("keydown", function(event) {
-        if (event.code === "Space") {
-            jump();
-        }
-    });
+        document.addEventListener("keydown", function(event) {
+            if (event.code === "Space") {
+                jump();
+                // Prevent scrolling when jumping
+                event.preventDefault();
+            }
+        });
 
-    let isAlive = setInterval(function() {
-        let dinoRect = dino.getBoundingClientRect();
-        let cactusRect = cactus.getBoundingClientRect();
+        let isAlive = setInterval(function() {
+            // Get current positions
+            let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
+            let cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"));
 
-        if (
-            cactusRect.left < dinoRect.right &&
-            cactusRect.right > dinoRect.left &&
-            dinoRect.bottom > cactusRect.top
-        ) {
-            alert("Game Over! Try again?");
-            cactus.classList.remove("cactus-move");
-            void cactus.offsetWidth;
-            cactus.classList.add("cactus-move");
-        }
-    }, 10);
-</script>
+            // Collision Detection logic (Adjusted for the container size)
+            // If cactus is between 0 and 90px from the left and dino is not high enough
+            if (cactusLeft < 90 && cactusLeft > 50 && dinoTop >= 110) {
+                alert("Game Over! Try again?");
+                // Reset cactus position
+                cactus.style.animation = "none";
+                void cactus.offsetWidth; // Trigger reflow
+                cactus.style.animation = "move 1.5s infinite linear";
+            }
+        }, 10);
+    </script>
 
     <div class="copyright">
         &copy; our portfolio main menu :D
